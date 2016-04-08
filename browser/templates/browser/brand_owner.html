@@ -1,0 +1,69 @@
+{% extends "browser/base.html" %}
+{% load static %}
+{% block content %}
+
+
+
+<div class="container">
+  <div class="page-header">
+    <h1>{{owner_detail.OWNER_NM}} - Brand list</h1>
+  </div>
+</div>
+
+<div class="list-header">
+  <div class="container">
+
+            <table border="0" cellspacing="0px" cellpadding="0px">
+            <tr>
+                <td>
+                  <!-- {{MEDIA_URL}}owner/{{owner_detail.OWNER_CD|stringformat:"06d"}}.jpg -->
+                  <img class="thumbnail-list"
+                    src="{{MEDIA_URL}}owner/{{owner_detail.OWNER_CD|stringformat:"06d"}}.jpg"
+                    title="{{owner_detail.OWNER_NM}}" alt="{{owner_detail.OWNER_NM}}"
+                    onerror="this.src='{% static 'browser/img/coming-soon.jpg' %}';"  >
+                </td>
+                <td>
+					<b>Owner name</b> : {{owner_detail.OWNER_NM}}<br><br>
+                    <b>Website</b> : <a href="{{owner_detail.OWNER_LINK}}" target="_blank" rel="nofollow">{{owner_detail.OWNER_LINK}}</a><br>
+                    <br>
+                    <img src="{% static 'browser/img/35px-Wikipedia-logo.png' %}" > <a href="{{owner_detail.OWNER_WIKI_EN}}" target="_blank" rel="nofollow">See the article on Wikipedia</a><br>
+                </td>
+            </tr>
+            </table>
+  </div>
+</div>
+	{% if brand_list %}
+
+		{% for Brand in brand_list %}
+    <div class="list-item">
+  		<div class="container">
+  	    <table>
+        <tr>
+            <td>
+                	<a href="{% url 'browser:bsin' Brand.BSIN %}" >
+                    <!-- {{MEDIA_URL}}brand/{{Brand.BSIN}}.jpg -->
+                    <img class="thumbnail-list"
+                        src="{{MEDIA_URL}}brand/{{Brand.BSIN}}.jpg"
+                        alt="{{Brand.BRAND_NM}}"
+                        title="{{Brand.BRAND_NM}}"
+                        onerror="this.src='{% static 'browser/img/coming-soon.jpg' %}';"  >
+                    </a>
+              </td>
+              <td>
+                <h2>{{Brand.BRAND_NM}}</h2>
+
+               <b>BSIN</b> :  {{Brand.BSIN}} <br >
+                {% if Brand.BRAND_NM %} <b>Brand name</b> : {{Brand.BRAND_NM}} <br>{% endif %}
+                <br><br>
+                >> <a href="{% url 'browser:bsin' Brand.BSIN %}" > Voir la liste des produits </a>
+
+              </td>
+          </tr>
+        </table>
+        <hr>
+      </div>
+    </div>
+		{% endfor %}
+	{% endif %}
+</div>
+ {% endblock %}

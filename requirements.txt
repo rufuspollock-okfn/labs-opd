@@ -1,0 +1,21 @@
+
+# Django and PostgreSQL
+Django==1.9.2
+psycopg2==2.6.1
+django-extensions==1.6.1
+djangorestframework==3.3.2
+
+# Heroku app dependencies
+dj-database-url==0.4.0
+gunicorn==19.4.5
+whitenoise==2.0.6
+
+
+colorama==0.3.6
+django-angular==0.7.15
+httpie==0.9.3
+Pillow==3.1.1
+Pygments==2.1.1
+requests==2.9.1
+six==1.10.0
+wheel==0.26.0

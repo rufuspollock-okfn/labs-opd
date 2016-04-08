@@ -1,0 +1,29 @@
+{% extends "browser/base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+	<div class="page-header">
+		<h1>Browse by Owners</h1>
+	</div>
+
+{% if owner_list %}
+<section class="row">
+	{% for Owner in owner_list %}
+	<div class="col-xs-4 col-sm-3 col-md-2">
+			<a href="owner-{{Owner.OWNER_CD|stringformat:"06d"}}">
+					<!-- {{MEDIA_URL}}owner/{{Owner.OWNER_CD|stringformat:"06d"}}.jpg -->
+				  <img class="thumbnail-list"
+					src="{{MEDIA_URL}}owner/{{Owner.OWNER_CD|stringformat:"06d"}}.jpg"
+					title="Owner - {{Owner.OWNER_NM}}"
+					alt="Owner - {{Owner.OWNER_NM}}"
+					onerror="this.src='{% static 'browser/img/coming-soon.jpg' %}';" >
+			</a>
+			<p>{{Owner.OWNER_NM}}</p>
+  </div>
+	{% endfor %}
+</section>
+{% endif %}
+</div>
+</div>
+{% endblock %}

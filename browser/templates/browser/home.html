@@ -1,0 +1,59 @@
+{% extends "browser/base.html" %}
+{% load static %}
+{% block content %}
+
+
+
+<div class="container">
+		<div class="row featurette">
+        <div class="col-md-7 col-md-push-5">
+          <h2 class="featurette-heading">Let's browse Open Product Data </h2>
+          <p class="lead">Use the GTIN-13 code printed just below the barcode of any kind of product. If the code is composed of only 12 digits, add a zero in front of the code to get a valide GTIN-13 code.</p>
+
+					<form class="form-search" action="{% url 'browser:search' %}" method="post">
+						{% csrf_token %}
+		        <label for="inputEmail" class="sr-only">GTIN search</label>
+		        <input name="gtin" type="text" class="form-control" placeholder="Search a GTIN-13 Code" required="" autofocus="">
+		        <button class="btn btn-lg btn-primary" type="submit">></button>
+		      </form>
+					{% if error_message %}<p>{{ error_message }}</p>{% endif %}
+
+        </div>
+        <div class="col-md-5 col-md-pull-7">
+          <img class="featurette-image img-responsive center-block" data-src="holder.js/400x400/auto" alt="Open Product Data" src="{% static 'browser/img/opd_logo_400.png' %}" data-holder-rendered="true">
+        </div>
+    </div>
+</div>
+
+<div class="home-browse">
+	<div class="container">
+			<div class="row">
+			        <div class="col-lg-4">
+			          <a href="brand/list-a"><img class="img-circle" src="{% static 'browser/img/navigate-brand.jpg' %}" alt="Generic placeholder image" width="140" height="140"></a>
+			          <h2>Browse by Brand</h2>
+			          <p></p>
+			        </div><!-- /.col-lg-4 -->
+			        <div class="col-lg-4">
+			          <a href="{% url 'browser:owner_list' %}"><img class="img-circle" src="{% static 'browser/img/navigate-owner.jpg' %}" alt="Generic placeholder image" width="140" height="140"></a>
+			          <h2>Browse by Owner</h2>
+								<p></p>
+			        </div><!-- /.col-lg-4 -->
+			        <div class="col-lg-4">
+			          <a href="{% url 'browser:nutrition' %}"><img class="img-circle" src="{% static 'browser/img/nutrition2.jpg' %}" alt="Generic placeholder image" width="140" height="140"></a>
+			          <h2>Nutrition Facts</h2>
+			          <p></p>
+							</div>
+			  </div><!-- /.col-lg-4 -->
+			</div>
+	</div>
+
+<div class="home-participate">
+	<div class="container">
+			<h2 >You want to participate ? Let's join on <a href="https://github.com/okfn/opd-product-browser-web-new"> Github </a> !</h2>
+			<img src="{% static 'browser/img/python-django.jpg' %}">
+	</div>
+</div>
+
+
+
+{% endblock %}

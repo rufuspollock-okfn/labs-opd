@@ -1,0 +1,116 @@
+{% extends "browser/base.html" %}
+{% load static %}
+{% block content %}
+<div class="container">
+	<div class="page-header">
+		<h1>Download Data</h1>
+	</div>
+
+		<div class="alert alert-info" role="alert">
+			<iframe id="twitter-widget-1" scrolling="no" frameborder="0" allowtransparency="true" class="twitter-follow-button twitter-follow-button-rendered" title="Twitter Follow Button" src="http://platform.twitter.com/widgets/follow_button.baa54ded21a982344c4ced326592f3de.en.html#dnt=false&amp;id=twitter-widget-1&amp;lang=en&amp;screen_name=openproductdata&amp;show_count=false&amp;show_screen_name=false&amp;size=m&amp;time=1454334759436" style="position: static; visibility: visible; width: 64px; height: 20px;" data-screen-name="openproductdata"></iframe>
+					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+			Follow us on twitter to get informed about new release !
+	</div>
+
+		<h2>Terms of use</h2>
+
+		<div class="well">
+			Open Product Data is open data, licensed under the <a href="http://opendatacommons.org/licenses/odbl/" target="_blank">Open Data Commons Open Database License (ODbL)</a>.<br>
+			You are free to copy, distribute, transmit and adapt our data, as long as you credit Open Product Data and its contributors. If you alter or build upon our data, you may distribute the result only under the same licence. The full legal code explains your rights and responsibilities.
+		</div>
+
+		<h2>Dump and Zip to download</h2>
+
+		<div class="well">
+		OPD uses now the <b>BSIN code</b>  to assign a brand to a product. Please go at the following address to get a dump of the brand repository : <a href="http://product.okfn.org/brand/">http://product.okfn.org/brand/</a>
+		</div>
+
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>File</th>
+					<th>Format - size</th>
+					<th>Date - version</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>OPD Database - Specifications</td>
+					<td>Excel file</td>
+					<td>2013.11.13</td>
+					<td><a href="docs/OPD-SPECS-2013.11.13_01.xlsx" target="_blank" rel="nofollow">Direct download</a></td>
+				</tr>
+				<tr>
+					<td>OPD Database - Dump</td>
+					<td>gzipped SQL file (MySQL)</td>
+					<td>2014.01.01 v1</td>
+					<td><a href="docs/pod_web_2014.01.01_01.sql.gz" target="_blank" rel="nofollow">Direct download</a></td>
+				</tr>
+				<tr>
+					<td>Pictures - Owner</td>
+					<td>Zip file</td>
+					<td>2013.06.24</td>
+					<td><a href="docs/pod_pictures_owner_2013.06.24_01.zip" target="_blank" rel="nofollow">Direct download</a></td>
+				</tr>
+				<tr>
+					<td>Pictures - Brand</td>
+					<td>Zip file</td>
+					<td>2013.11.13</td>
+					<td><a href="docs/pod_pictures_brand_2013.11.13_01.zip" target="_blank" rel="nofollow">Direct download</a></td>
+				</tr>
+				<tr>
+					<td>Pictures - GTIN</td>
+					<td>Zip file (2.6 Gb)</td>
+					<td>2013.08.29</td>
+					<td><a href="docs/pod_pictures_gtin_2013.08.29_01.zip" target="_blank" rel="nofollow">Direct download</a></td>
+				</tr>
+			</tbody>
+		</table>
+
+		<h2>Open GEPIR</h2>
+
+
+			<table class="table table-striped">
+			  <thead>
+			    <tr>
+			      <th>File</th>
+			      <th>Format - size</th>
+			      <th>Date - version</th>
+			      <th></th>
+			    </tr>
+			  </thead>
+			  <tbody>
+					<tr>
+						<td>Open GEPIR - Dump</td>
+						<td>gzipped SQL file (MySQL)</td>
+						<td>2013.12.20 v1</td>
+						<td><a href="docs/gs1_gcp-2013.12.20_01.sql.gz" target="_blank" rel="nofollow">Direct download</a></td>
+					</tr>
+					<tr>
+						<td>Open GEPIR - Dump</td>
+						<td>zipped CSV file</td>
+						<td>2013.12.20 v1</td>
+						<td><a href="docs/gs1_gcp-2013.12.20_01.zip" target="_blank" rel="nofollow">Direct download</a></td>
+					</tr>
+					<tr>
+						<td>Open GEPIR - Dump</td>
+						<td>Excel file XLSX</td>
+						<td>2013.12.20 v1</td>
+						<td>
+								<a href="docs/GEPIR_US.xlsx" target="_blank" rel="nofollow">GEPIR US</a> -
+								<a href="docs/GEPIR_FR.xlsx" target="_blank" rel="nofollow">GEPIR FR</a> -
+								<a href="docs/GEPIR_OTHER.xlsx" target="_blank" rel="nofollow">GEPIR OTHER COUNTRIES</a>
+						</td>
+					</tr>
+					<tr>
+						<td>Open GEPIR - GCP length rules</td>
+						<td>Excel file</td>
+						<td></td>
+						<td><a href="docs/pod_gs1_gcp_rules.xlsx" target="_blank" rel="nofollow">Direct download</a></td>
+					</tr>
+			  </tbody>
+			</table>
+
+</div>
+ {% endblock %}
