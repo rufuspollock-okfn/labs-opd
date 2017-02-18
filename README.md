@@ -35,9 +35,10 @@ Open Product Data is a project of [Open Knowledge Foundation Open Product Data] 
 
 * Make sure you have a running Docker setup (including Docker Compose). For an easy setup, have a look at the [Docker Toolbox](https://www.docker.com/products/docker-toolbox).
 * `git clone https://github.com/okfn/opd-product-browser-web.git`
-* `cd opd-product-browser-web`
+* `cd opd-product-browser-web/scripts/dockerfiles`
+* `wget -O - http://www.product-open-data.com/docs/pod_web_2014.01.01_01.sql.gz | gunzip -c > pod_mysql/products.sql`
 * `docker create -v /var/lib/postgresql --name opd_postgres_data postgres:9.4 /bin/true`
-* `docker-compose up -d db`
+* `docker-compose up -p opd-product-browser-web -d db`
 * `docker exec opdproductbrowserweb_db_1 createdb -Upostgres opd`
 * `docker-compose up -d`
 * Open port 18080 on your Docker host in a web browser. If you're using the Docker Toolbox, this should be http://192.168.99.100:18080/
