@@ -8,7 +8,8 @@
 		<div class="row featurette">
         <div class="col-md-7 col-md-push-5">
           <h2 class="featurette-heading">Let's browse Open Product Data </h2>
-          <p class="lead">Use the GTIN-13 code printed just below the barcode of any kind of product. If the code is composed of only 12 digits, add a zero in front of the code to get a valide GTIN-13 code.</p>
+          <p class="lead">Use the GTIN-13 code printed just below the barcode of any kind of product. 
+		  If the code is composed of only 12 digits, add a zero in front of the code to get a valid GTIN-13 code.</p>
 
 					<form class="form-search" action="{% url 'browser:search' %}" method="post">
 						{% csrf_token %}
