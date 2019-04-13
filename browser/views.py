@@ -9,6 +9,7 @@ from .models import Gtin, Nutrition, Brand, Brand_owner, Search
 # import for REST
 
 from browser.serializers import GtinSerializer
+from django.forms import Form
 from django.http import Http404
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -20,25 +21,38 @@ import requests
 #  WEBSITE BROWSER
 # --------------------------------------------------------------------
 
+class SearchForm(Form):
+    gtin = forms.CharField(max_length=13)
+
+    def clean_gtin(self):
+        data = self.cleaned_data['gtin']
+        if not str.isnumeric(data):
+            raise forms.ValidationError("GTIN must be numeric")
+
 
 def search_gtin(request):
-    if Search.objects.filter(pk=request.POST['gtin']).exists():
-        search_gtin = Search.objects.get(pk=request.POST['gtin'])
+    f = SearchForm(request.POST)
+    if not f.is_valid():
+        return render(request, 'browser/home.html', {
+            'error_message': "This search request is not correctly formatted",
+        })
+
+    gtin_code = f.cleaned_data.get('gtin')
+    try:
+        search_gtin = Search.objects.get(pk=gtin_code)
         search_gtin.SEARCH_NB += 1
         search_gtin.save()
-    else:
-        new_entry = Search(GTIN_CD = request.POST['gtin'], SEARCH_NB = 1)
-        new_entry.save()
+    except Search.DoesNotExist:
+        search_gtin = Search(GTIN_CD = gtin_code, SEARCH_NB = 1)
+    search_gtin.save()
 
     try:
-        if request.POST['gtin']:
-            gtin = Gtin.objects.get(pk=request.POST['gtin'])
-    except (KeyError, Gtin.DoesNotExist):
+        gtin = Gtin.objects.get(pk=gtin_code)
+    except Gtin.DoesNotExist:
         return render(request, 'browser/home.html', {
             'error_message': "This GTIN is not in the database",
         })
-    else:
-        return HttpResponseRedirect(reverse('browser:gtin', args=(gtin,)))
+    return HttpResponseRedirect(reverse('browser:gtin', args=(gtin,)))
 
 class ViewGtin(generic.DetailView):
     template_name = 'browser/gtin.html'
