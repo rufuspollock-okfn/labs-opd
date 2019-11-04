@@ -7,7 +7,7 @@ djangorestframework==3.3.2
 
 # Heroku app dependencies
 dj-database-url==0.4.0
-gunicorn==19.4.5
+gunicorn==19.5.0
 whitenoise==2.0.6
 
 
