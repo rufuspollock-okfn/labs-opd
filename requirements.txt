@@ -3,7 +3,7 @@
 Django==1.9.2
 psycopg2-binary==2.7.5
 django-extensions==1.6.1
-djangorestframework==3.3.2
+djangorestframework==3.11.2
 
 # Heroku app dependencies
 dj-database-url==0.4.0
