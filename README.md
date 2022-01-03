@@ -1,3 +1,7 @@
+# Notice
+
+**This repository is archived. For an alternative, check Brocade.io**
+
 # Description
 
 This website aims to browse Open Product Data (OPD) database.
